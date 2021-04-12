@@ -7,8 +7,7 @@ function help(nums, left, right) {
     if (left >= right) {
         return;
     }
-    swap(nums, left, Math.floor((left + right) / 2));
-    //每次取数组的最左边的值为基准值
+    //为了方便,每次取数组的最左边的值为基准值
     let pivot = nums[left];
     let l = left;
     let r = right;
@@ -34,7 +33,7 @@ function swap(nums, index1, index2) {
     nums[index2] = temp;
 }
 
-let nums = [3, 2, 1, 5, 0];
+let nums = [3,3,3,3, 2, 1, 5];
 quickSort(nums).forEach(element => {
     console.log(element);
 });
