@@ -1,16 +1,19 @@
-function preOrder2(node) {
+function preOrder2(root) {
+  if(!root) {
+    return;
+  }
   let res = [];
   let stack = [];
-  let cur = node;
-  while (stack.length || cur) {
-    while(cur){
-      res.push(cur.val);
-      stack.push(cur);
-      cur=cur.left;
+  stack.push(root);
+  let cur;
+  while (stack.length) {
+    cur = stack.pop();
+    res.push(cur.val);
+    if(cur.right) {
+      stack.push(cur.right);
     }
-    if(stack.length) {
-      cur = stack.pop();
-      cur = cur.right;
+    if(cur.left) {
+      stack.push(cur.left);
     }
   }
   return res;
