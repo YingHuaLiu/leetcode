@@ -4,36 +4,63 @@ function quickSort(nums) {
 }
 
 function help(nums, left, right) {
-    if (left >= right) {
+    // 如果区间过小就用插入排序
+    if (right - left < 10) {
+        insertionSort(nums, left, right)
         return;
     }
-    //为了方便,每次取数组的最左边的值为基准值
-    let pivot = nums[left];
-    let l = left;
-    let r = right;
+    if (left >= right) return;
+    //每次取数组最左边、中间、和最右边的中值为基准值
+    let pivot = medianOfThree(nums, left, right);
+    // let pivot = nums[left]
+    let l = left; //左指针
+    let i = left + 1 //中指针
+    let r = right; //右指针
 
-    while (l < r) {
-        while (l < r && nums[r] >= pivot) {
-            r--;
+    while (i <= r) {
+        if (nums[i] === pivot) {
+            i++
+        } else if (nums[i] < pivot) {
+            [nums[i], nums[l]] = [nums[l], nums[i]]
+            l++
+            i++
+        } else {
+            [nums[i], nums[r]] = [nums[r], nums[i]]
+            r--
         }
-        while (l < r && nums[l] <= pivot) {
-            l++;
-        }
-        swap(nums, l, r);
     }
-    nums[left] = nums[l];
-    nums[l] = pivot;
-    help(nums, left, r - 1);
-    help(nums, r + 1, right);
+    // [nums[left], nums[l]] = [nums[l], nums[left]]
+    help(nums, left, l - 1)
+    help(nums, r + 1, right)
 }
 
-function swap(nums, index1, index2) {
-    let temp = nums[index1];
-    nums[index1] = nums[index2];
-    nums[index2] = temp;
+function medianOfThree(nums, left, right) {
+    const mid = left + (right - left) >> 1
+    if (nums[mid] > nums[right]) {
+        [nums[mid], nums[right]] = [nums[right], nums[mid]]
+    }
+    if (nums[left] > nums[right]) {
+        [nums[left], nums[right]] = [nums[right], nums[left]]
+    }
+    if (nums[mid] > nums[left]) {
+        [nums[mid], nums[left]] = [nums[left], nums[mid]]
+    }
+    return nums[left]
 }
 
-let nums = [3,3,3,3, 2, 1, 5];
-quickSort(nums).forEach(element => {
-    console.log(element);
-});
+function insertionSort(arr, left, right) {
+    let preIndex, current
+    for (let i = left + 1; i <= right; i++) {
+        preIndex = i - 1
+        current = arr[i]
+        while (preIndex >= left && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex]
+            preIndex--
+        }
+        arr[preIndex + 1] = current
+    }
+    return arr
+}
+
+let nums = [10, 5, 5, 5, 5, 5, 5, 5, 7, 4, 1, 5];
+console.log(quickSort(nums));
