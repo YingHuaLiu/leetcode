@@ -1,9 +1,10 @@
+// 自顶向下
 function mergeSort(arr) {
   if(arr.length < 2) {
     return arr;
   }
-  let left = arr.slice(0, Math.floor(arr.length / 2));
-  let right = arr.slice(Math.floor(arr.length / 2));
+  let left = arr.slice(0, arr.length >> 1);
+  let right = arr.slice(arr.length >> 1);
   return merge(mergeSort(left), mergeSort(right));
 }
 
@@ -31,6 +32,4 @@ function merge(left, right) {
 }
 
 let arr = [3, 1, 2, 5, 0];
-mergeSort(arr).forEach(item => {
-  console.log(item);
-});
+console.log(mergeSort(arr));

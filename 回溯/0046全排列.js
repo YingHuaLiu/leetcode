@@ -44,9 +44,9 @@ const backTrack = (nums, first, length, res) => {
     res.push(JSON.parse(JSON.stringify(nums))); // 一定要深拷贝
   }
   for (let i = first; i < length; i++) {
-    [nums[first], nums[i]] = [nums[i], nums[first]];
+    [nums[first], nums[i]] = [nums[i], nums[first]]; //做决策
     backTrack(nums, first + 1, length, res);
-    [nums[first], nums[i]] = [nums[i], nums[first]];
+    [nums[first], nums[i]] = [nums[i], nums[first]]; //撤销决策
   }
 };
 console.log(permute2([1, 2, 3, 4]));

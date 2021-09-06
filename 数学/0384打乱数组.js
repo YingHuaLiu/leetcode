@@ -1,3 +1,4 @@
+//fisher法
 class FisherSolution {
   constructor(nums) {
     this.array = nums;
@@ -23,6 +24,7 @@ class FisherSolution {
 let test = new FisherSolution([1, 2, 3, 4, 5]);
 console.log(test.shuffle());
 
+// 暴力法
 class Solution {
   constructor(nums) {
     this.array = nums;
@@ -35,6 +37,7 @@ class Solution {
   }
 
   shuffle() {
+    debugger;
     const list = Object.assign([], this.array);
     for (let i = 0; i < this.array.length; i++) {
       let index = Math.floor(Math.random() * list.length);
@@ -44,6 +47,4 @@ class Solution {
     return this.array;
   }
 }
-
-
 

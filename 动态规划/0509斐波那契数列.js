@@ -1,3 +1,4 @@
+// 暴力法
 var fib = function (n) {
   if (n < 2) {
     return n;
@@ -5,9 +6,8 @@ var fib = function (n) {
   return fib(n - 1) + fib(n - 2);
 };
 
-console.log(fib(5));
-
-var fib2 = function (n) {
+// 滑动数组
+var fib = function (n) {
   if (n < 2) {
     return n;
   }
@@ -19,5 +19,3 @@ var fib2 = function (n) {
   }
   return result;
 };
-
-console.log(fib2(5))
