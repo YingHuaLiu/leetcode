@@ -20,15 +20,7 @@ function merge(left, right) {
     }
   }
 
-  while (left.length) {
-    result.push(left.shift());
-  }
-
-  while (right.length) {
-    result.push(right.shift());
-  }
-
-  return result;
+  return result.concat(left).concat(right);
 }
 
 let arr = [3, 1, 2, 5, 0];
