@@ -5,11 +5,11 @@ function longestPalindrome(s) {
     if (!s || !length) {
         return s
     }
-    let left = 0, right = 0, maxStart = 0, maxLen = 0, len
+    let  maxStart = 0, maxLen = 0
     for (let i = 0; i < length; i++) {
-        len = 1
-        left = i - 1
-        right = i + 1
+        let len = 1
+        let left = i - 1
+        let right = i + 1
         while (left >= 0 && s[i] === s[left]) {
             len++
             left--

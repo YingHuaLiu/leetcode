@@ -36,16 +36,16 @@ const permute2 = (nums) => {
     return [];
   }
   let res = [];
-  backTrack(nums, 0, nums.length, res);
+  backTrack(nums, 0, res);
   return res;
 };
-const backTrack = (nums, first, length, res) => {
-  if(first === length) {
+const backTrack = (nums, first, res) => {
+  if(first === nums.length) {
     res.push(JSON.parse(JSON.stringify(nums))); // 一定要深拷贝
   }
-  for (let i = first; i < length; i++) {
+  for (let i = first; i < nums.length; i++) {
     [nums[first], nums[i]] = [nums[i], nums[first]]; //做决策
-    backTrack(nums, first + 1, length, res);
+    backTrack(nums, first + 1, res);
     [nums[first], nums[i]] = [nums[i], nums[first]]; //撤销决策
   }
 };

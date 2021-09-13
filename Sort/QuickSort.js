@@ -52,7 +52,7 @@ function insertionSort(nums, left, right) {
   for (let i = left + 1; i <= right; i++) {
     let cur = nums[i];
     let index = i;
-    while (index >= left && nums[index] < nums[index - 1]) {
+    while (index > left && nums[index] < nums[index - 1]) {
       [nums[index], nums[index - 1]] = [nums[index - 1], nums[index]];
       index--;
     }
