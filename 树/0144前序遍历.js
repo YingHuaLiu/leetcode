@@ -1,35 +1,31 @@
-function preOrder2(root) {
-  if(!root) {
-    return
-  }
-  let res = []
-  let stack = [root]
-  while (stack.length) {
-    let cur = stack.pop()
-    res.push(cur.val)
-    if(cur.right) {
-      stack.push(cur.right)
+function preOrder(root) {
+  let res = [];
+  let stack = [];
+  while (stack.length || root) {
+    while (root) {
+      res.push(root.val);
+      stack.push(root);
+      root = root.left;
     }
-    if(cur.left) {
-      stack.push(cur.left)
-    }
+    root = stack.pop();
+    root = root.right;
   }
-  return res
+  return res;
 }
 
 function preOrder(root) {
-  const res = []
+  const res = [];
 
   function recursion(head) {
     if(!root) {
-      return
+      return;
     }
-    res.push(head.val)
-    recursion(head.left)
-    recursion(head.right)
+    res.push(head.val);
+    recursion(head.left);
+    recursion(head.right);
   }
 
-  recursion(root)
-  return res
+  recursion(root);
+  return res;
 }
 

@@ -9,7 +9,6 @@ function help(nums, left, right) {
     insertionSort(nums, left, right);
     return;
   }
-  if(left >= right) return;
   //每次取数组最左边、中间、和最右边的中值为基准值
   let pivot = medianOfThree(nums, left, right);
   // let pivot = nums[left]
