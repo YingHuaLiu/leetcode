@@ -41,7 +41,7 @@ const permute2 = (nums) => {
 };
 const backTrack = (nums, first, res) => {
   if(first === nums.length) {
-    res.push(JSON.parse(JSON.stringify(nums))); // 一定要深拷贝
+    res.push([...nums]); // 一定要深拷贝
   }
   for (let i = first; i < nums.length; i++) {
     [nums[first], nums[i]] = [nums[i], nums[first]]; //做决策
