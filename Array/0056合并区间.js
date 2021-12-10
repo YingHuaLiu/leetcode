@@ -1,11 +1,6 @@
 function merge(intervals) {
-  if(!intervals.length) {
-    return [[]];
-  }
-  // 对区间的左端点进行排序
-  intervals.sort((a, b) => {
-    return a[0] - b[0];
-  });
+  // 核心：对区间的左端点进行排序
+  intervals.sort((a, b) => a[0] - b[0]);
   const result = [];
   for (let i = 0; i < intervals.length; i++) {
     const l = intervals[i][0], r = intervals[i][1];

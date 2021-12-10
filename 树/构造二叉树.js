@@ -40,13 +40,13 @@ function buildTreeByInAndPostHelper(inorder, iStart, iEnd, postorder, pStart, pE
 
   //重建根节点
   let root = new TreeNode(postorder[pEnd]);
-  let index = 0;  //index找到根节点在中序遍历的位置
-  while (inorder[index] !== root.no) {
-    index++;
+  let gap = 0;  //index找到根节点在中序遍历的位置
+  while (inorder[iStart + gap] !== root.val) {
+    gap++;
   }
 
-  root.left = buildTreeByInAndPostHelper(inorder, iStart, index - 1, postorder, pStart, pStart + index - iStart - 1);
-  root.right = buildTreeByInAndPostHelper(inorder, index + 1, iEnd, postorder, pStart + index - iStart, pEnd - 1);
+  root.left = buildTreeByInAndPostHelper(inorder, iStart, iStart + gap - 1, postorder, pStart, pStart + gap - 1);
+  root.right = buildTreeByInAndPostHelper(inorder, iStart + gap + 1, iEnd, postorder, pStart + gap, pEnd - 1);
 
   return root;
 }

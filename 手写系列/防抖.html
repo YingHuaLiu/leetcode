@@ -16,30 +16,30 @@
   </style>
 </head>
 <body>
-<div id="container"></div>
-<script>
-  let count = 1
-  const action = debounce(addCount, 3000)
+  <div id="container"></div>
+  <script>
+    let count = 1;
+    const action = debounce(addCount, 3000);
 
-  document.getElementById('container').addEventListener('mousemove',action)
+    document.getElementById('container').addEventListener('mousemove', action);
 
-  function addCount() {
-    container.innerHTML = count++
-  }
-
-  function debounce(func, wait) {
-    let timeout;
-
-    return function () {
-      let _this = this;
-      let _args = arguments; // 传入event事件对象
-      clearTimeout(timeout);
-      timeout = setTimeout(function () {
-        func.apply(_this, _args)
-      }, wait);
+    function addCount() {
+      container.innerHTML = count++;
     }
-  }
 
-</script>
+    function debounce(func, wait) {
+      let timeout;
+
+      return function () {
+        let _this = this;
+        let _args = arguments; // 传入event事件对象
+        clearTimeout(timeout);
+        timeout = setTimeout(function () {
+          func.apply(_this, _args);
+        }, wait);
+      };
+    }
+
+  </script>
 </body>
 </html>

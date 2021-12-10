@@ -32,9 +32,6 @@ const dfs = (nums, length, depth, path, used, res) => {
 };
 
 const permute2 = (nums) => {
-  if(!nums.length) {
-    return [];
-  }
   let res = [];
   backTrack(nums, 0, res);
   return res;
