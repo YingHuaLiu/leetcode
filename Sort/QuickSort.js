@@ -11,20 +11,19 @@ function help(nums, left, right) {
   }
   //每次取数组最左边、中间、和最右边的中值为基准值
   let pivot = medianOfThree(nums, left, right);
-  // let pivot = nums[left]
   let l = left; //左指针
-  let i = left + 1; //中指针
+  let m = left + 1; //中指针
   let r = right; //右指针
 
-  while (i <= r) {
-    if(nums[i] === pivot) {
-      i++;
-    } else if(nums[i] < pivot) {
-      [nums[i], nums[l]] = [nums[l], nums[i]];
+  while (m <= r) {
+    if(nums[m] === pivot) {
+      m++;
+    } else if(nums[m] < pivot) {
+      [nums[m], nums[l]] = [nums[l], nums[m]];
       l++;
-      i++;
+      m++;
     } else {
-      [nums[i], nums[r]] = [nums[r], nums[i]];
+      [nums[m], nums[r]] = [nums[r], nums[m]];
       r--;
     }
   }
@@ -52,7 +51,7 @@ function insertionSort(nums, left, right) {
     let cur = nums[i];
     let index = i;
     while (index > left && nums[index] < nums[index - 1]) {
-      [nums[index], nums[index - 1]] = [nums[index - 1], nums[index]];
+      nums[index - 1] = nums[index]
       index--;
     }
     nums[index] = cur;
