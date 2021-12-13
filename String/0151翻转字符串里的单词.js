@@ -14,12 +14,16 @@ var reverseWords = function (s) {
   }
   let word = [], queue = [];
   while (left <= right) {
-    // 当遇到空格时，并且word里面有值（跳过连续出现的空格）
-    if(word.length && s[left] === ' ') {
+    // 当遇到空格时
+    if(s[left] === ' ') {
       // 此时word结束，推到queue头部
       queue.unshift(word.join(''));
       word = [];
-    } else if(s[left] !== ' ') {
+      // 如果遇到连续空格，则需要跳过
+      while (s[left + 1] === ' ') {
+        left++;
+      }
+    } else {
       word.push(s[left]);
       // 如果left===right,此时匹配结束，需要将最后的word推到queue中
       if(left === right) {

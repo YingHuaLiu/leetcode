@@ -1,23 +1,19 @@
 var compress = function (chars) {
-  let write = 0;
-  for (let read = 0; read < chars.length;) {
+  // 读写指针
+  let write = 0, read = 0;
+  while (read < chars.length) {
     let temp = read;
-    while (temp < chars.length && chars[read] === chars[temp]) {
+    while (temp < chars.length && chars[temp] === chars[read]) {
       temp++;
     }
     chars[write++] = chars[read];
     if(temp - read > 1) {
-      //   let gap = temp - read + '';
-      //   for (let k = 0; k < gap.length; k++) {
-      //     chars[write++] = gap[k];
-      //   }
-      let gap = temp - read, start = write, end = start;
+      let gap = temp - read, start = write;
       while (gap !== 0) {
-        chars[end++] = gap % 10 + '';
+        chars[write++] = gap % 10 + '';
         gap = Math.floor(gap / 10);
       }
-      reverse(chars, start, end - 1);
-      write = end;
+      reverse(chars, start, write - 1);
     }
     read = temp;
   }
@@ -26,12 +22,10 @@ var compress = function (chars) {
 
 function reverse(chars, start, end) {
   while (start < end) {
-    let t = chars[start];
-    chars[start] = chars[end];
-    chars[end] = t;
+    [chars[start],chars[end]]=[chars[end],chars[start]]
     start++;
     end--;
   }
 }
 
-console.log(compress(['a', 'a', 'b', 'b', 'c', 'c', 'c']));
+console.log(compress(["a","b","b","b","b","b","b","b","b","b","b","b","b"]));

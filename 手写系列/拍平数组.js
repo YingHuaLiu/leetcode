@@ -42,7 +42,7 @@ Array.prototype.fakeFlat = function (num = 1) {
     ? arr.reduce((pre, cur) => {
       return pre.concat(Array.isArray(cur) ? cur.fakeFlat() : cur)
     }, [])
-    : arr.slice()
+    : arr
 }
 
 const arr = [1, 2, 3, 4, [1, 2, 3, [1, 2, 3, [1, 2, 3]]], , , , 5, 'string', { name: '弹铁蛋同学' }]

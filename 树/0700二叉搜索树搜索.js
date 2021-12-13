@@ -1,12 +1,11 @@
 var searchBST = function (root, val) {
-  let cur = root
-  while (cur) {
-    if (val < cur.val) {
-      cur = cur.left
-    } else if (val > cur.val) {
-      cur = cur.right
+  while (root) {
+    if (val < root.val) {
+      root = root.left
+    } else if (val > root.val) {
+      root = root.right
     } else {
-      return cur
+      return root
     }
   }
   return null
