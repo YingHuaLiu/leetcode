@@ -27,7 +27,6 @@ function help(nums, left, right) {
       r--;
     }
   }
-  // [nums[left], nums[l]] = [nums[l], nums[left]]
   help(nums, left, l - 1);
   help(nums, r + 1, right);
 }
