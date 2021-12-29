@@ -21,3 +21,5 @@ function levelOrder(head) {
   }
   return result
 }
+
+module.exports={levelOrder}
