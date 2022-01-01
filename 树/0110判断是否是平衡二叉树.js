@@ -1,3 +1,4 @@
+// 空节点返回0；叶子结点返回1；如果当前节点不是平衡的，则返回-1，否则返回左右子树的最大深度+1
 var isBalanced = function (root) {
   if(!root) {
     return true
