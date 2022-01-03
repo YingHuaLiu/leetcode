@@ -1,3 +1,4 @@
+// dfs
 var hasPathSum = function (root, targetSum) {
     if (!root) {
         return false
