@@ -39,6 +39,7 @@ function medianOfThree(nums, left, right) {
   if(nums[left] > nums[right]) {
     [nums[left], nums[right]] = [nums[right], nums[left]];
   }
+  // 保证nums[left]是中间大的值
   if(nums[mid] > nums[left]) {
     [nums[mid], nums[left]] = [nums[left], nums[mid]];
   }
@@ -50,7 +51,7 @@ function insertionSort(nums, left, right) {
     let cur = nums[i];
     let index = i;
     while (index > left && nums[index] < nums[index - 1]) {
-      nums[index - 1] = nums[index]
+      nums[index - 1] = nums[index];
       index--;
     }
     nums[index] = cur;
