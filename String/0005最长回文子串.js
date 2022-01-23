@@ -5,35 +5,30 @@ function longestPalindrome(s) {
   if(!s || !length) {
     return s;
   }
-  let maxStart = 0, maxLen = 0;
+  let start = 0, maxLen = 0;
   for (let i = 0; i < length; i++) {
-    let len = 1;
-    let left = i - 1;
-    let right = i + 1;
-    // 先寻找左边与s[i]相等的长度
-    while (left >= 0 && s[i] === s[left]) {
-      len++;
-      left--;
-    }
-    // 再寻找右边与s[i]相等的长度
-    while (right < length && s[i] === s[right]) {
-      len++;
-      right++;
-    }
-    // 寻找左右端点同时相等的情况
-    while (left >= 0 && right < length && s[left] === s[right]) {
-      len += 2;
-      left--;
-      right++;
-    }
+    // 单个中心节点情况
+    let len1 = expandAroundCenter(s, i, i);
+    // 两个中心节点的情况
+    let len2 = expandAroundCenter(s, i, i + 1);
+    let len = Math.max(len1, len2);
     if(len > maxLen) {
-      // 因为不符合条件前left减了1，所以回文串真正开始的起点时left+1
-      maxStart = left + 1;
+      start = i - (len - 1) >> 1;
       maxLen = len;
     }
   }
-  return s.slice(maxStart, maxStart + maxLen);
+  return s.slice(start, start + maxLen);
 }
+
+function expandAroundCenter(s, left, right) {
+  while (left >= 0 && right < s.length && s[left] === s[right]) {
+    left--;
+    right++;
+  }
+  // 因为left-1、right+1了，所以这边要减一
+  return right - left - 1;
+}
+console.log(longestPalindrome('ccabac'));
 
 // 动态规划
 function longestPalindrome(s) {
@@ -60,4 +55,3 @@ function longestPalindrome(s) {
   return s.slice(maxStart, maxStart + maxLen);
 }
 
-console.log(longestPalindrome('ccabac'));

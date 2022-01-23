@@ -1,4 +1,4 @@
-const { buildTreeByPreAndIn } = require('./构造二叉树');
+const { buildTreeByPreAndIn } = require('../树/构造二叉树');
 
 // 前缀和，用hashmap存储从根节点到各个节点的路径和
 function pathSum(root, targetSum) {
