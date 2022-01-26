@@ -26,5 +26,6 @@ const treeToDoublyList = function (root) {
   pre.right = first;
   first.left = pre;
 
+  // 返回的最左节点也就是最小节点
   return first;
 };

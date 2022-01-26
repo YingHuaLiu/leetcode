@@ -3,10 +3,11 @@ var pathSum = function (root, targetSum) {
   const res = [];
   const dfs = function (root, sum, path) {
     if(!root) {
-      return [];
+      return;
     }
     sum += root.val;
     path.push(root.val);
+    // 如果当前是叶子节点，并且路径和正确，则加入res中
     if(!root.left && !root.right && sum === targetSum) {
       res.push(path.slice());
     }

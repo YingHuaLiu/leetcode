@@ -5,10 +5,10 @@ function dailyTemperatures(temperatures) {
   let res = new Array(temperatures.length).fill(0);
   for (let i = 0; i < temperatures.length; i++) {
     // 如果stack不为空，并且当前元素比栈顶温度高
-    // 则推出当前栈顶元素
-    // 记录栈顶元素的间隔
     while (stack.length && temperatures[i] > temperatures[stack[stack.length - 1]]) {
+      // 则推出当前栈顶元素
       let index = stack.pop();
+      // 记录栈顶元素的间隔
       res[index] = i - index;
     }
     stack.push(i);

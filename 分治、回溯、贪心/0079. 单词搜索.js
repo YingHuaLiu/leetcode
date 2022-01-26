@@ -15,7 +15,7 @@ var exist = function (board, word) {
     }
   }
 
-  function dfs(r, c, start, used, board, word) {
+  function dfs(r, c, start) {
     // 当前格子已被占用或者res已变成true
     if(used[r][c] || res) {
       return;
