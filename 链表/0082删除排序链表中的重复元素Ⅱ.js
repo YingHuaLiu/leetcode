@@ -1,3 +1,4 @@
+// 迭代
 var deleteDuplicates = function (head) {
   if(!head || !head.next) {
     return head;
@@ -18,4 +19,19 @@ var deleteDuplicates = function (head) {
   }
 
   return root.next;
+};
+// 递归
+var deleteDuplicates = function (head) {
+  if(!head || !head.next) {
+    return head;
+  }
+  if(head.val !== head.next.val) {
+    head.next = deleteDuplicates(head.next);
+    return head;
+  }
+  let next = head.next;
+  while (next && next.val === head.val) {
+    next = next.next;
+  }
+  return deleteDuplicates(next);
 };

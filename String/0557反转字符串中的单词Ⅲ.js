@@ -28,8 +28,8 @@ var reverseWords = function (s) {
       right++;
     }
     // 将单词从后往前存到res中
-    for (let i = left; i < right; i++) {
-      res.push(s[left + right - 1 - i]);
+    for (let i = right - 1; i >= left; i--) {
+      res.push(s[i]);
     }
     // 将单词间的空格储存进res中
     while (s[right] === ' ') {

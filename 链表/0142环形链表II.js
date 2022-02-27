@@ -2,21 +2,19 @@ var detectCycle = function (head) {
   if(!head || !head.next) {
     return null;
   }
-  let fast = head, slow = head;
-  while (true) {
-    if(!fast.next || !fast.next.next) {
-      return null;
-    }
-    fast = fast.next.next;
+  let slow = head, fast = head;
+  do {
     slow = slow.next;
-    if(fast === slow) {
-      break;
-    }
+    fast = fast.next.next;
+  } while (slow !== fast && fast && fast.next);
+  // 如果是因为fast到最后而终止，说明无环
+  if(fast !== slow) {
+    return null;
   }
   fast = head;
-  while (fast !== slow) {
-    fast = fast.next;
+  while (slow !== fast) {
     slow = slow.next;
+    fast = fast.next;
   }
-  return fast;
+  return slow;
 };

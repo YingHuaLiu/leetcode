@@ -37,7 +37,7 @@ function longestPalindrome(s) {
     return s;
   }
   let maxStart = 0, maxLen = 1;
-  const dp = new Array(length).fill(0).map(item => new Array(length).fill(false));
+  const dp = new Array(length).fill(0).map(() => new Array(length).fill(false));
   for (let i = 0; i < length; i++) {
     dp[i][i] = true;
   }

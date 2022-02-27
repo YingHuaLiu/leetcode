@@ -1,6 +1,9 @@
+// 只要求出数组中最大的三个数以及最小的两个数
 var maximumProduct = function (nums) {
-  let min1 = Number.MAX_SAFE_INTEGER, min2 = Number.MAX_SAFE_INTEGER;
-  let max1 = -Number.MAX_SAFE_INTEGER, max2 = -Number.MAX_SAFE_INTEGER, max3 = -Number.MAX_SAFE_INTEGER;
+  // min1是最小的，min2是第二小的
+  let min1 = min2 = Number.MAX_SAFE_INTEGER;
+  // max1是最大的，max2是第二大的，max3是第三大的
+  let max1 = max2 = max3 = -Number.MAX_SAFE_INTEGER;
 
   for (let num of nums) {
     if(num < min1) {

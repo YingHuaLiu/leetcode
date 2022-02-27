@@ -11,7 +11,7 @@ var findNumberOfLIS = function (nums) {
           count[i] += count[j];
         }
       }
-    }
+    } 
     max = Math.max(max, dp[i]);
   }
   let res = 0;

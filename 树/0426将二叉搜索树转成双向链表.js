@@ -1,4 +1,5 @@
 // http://www.noobyard.com/article/p-wuxtunam-ua.html
+// 递归
 const treeToDoublyList = function (root) {
   // 定义最左节点和最右节点
   let first, pre;
@@ -28,4 +29,31 @@ const treeToDoublyList = function (root) {
 
   // 返回的最左节点也就是最小节点
   return first;
+};
+
+// 迭代
+var treeToDoublyList = function (root) {
+  if(!root) {
+    return root;
+  }
+  let stack = [], left, pre;
+  while (root || stack.length) {
+    while (root) {
+      stack.push(root);
+      root = root.left;
+    }
+    root = stack.pop();
+    if(!left) {
+      left = root;
+      pre = root;
+    } else {
+      root.left = pre;
+      pre.right = root;
+      pre = root;
+    }
+    root = root.right;
+  }
+  pre.right = left;
+  left.left = pre;
+  return left;
 };

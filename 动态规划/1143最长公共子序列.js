@@ -1,7 +1,7 @@
 // https://leetcode-cn.com/problems/longest-common-subsequence/solution/fu-xue-ming-zhu-er-wei-dong-tai-gui-hua-r5ez6/
 function longestCommonSubsequence(text1, text2) {
     let length1 = text1.length, length2 = text2.length
-    const dp = new Array(length1 + 1).fill(0).map(item => new Array(length2 + 1).fill(0))
+    const dp = new Array(length1 + 1).fill(0).map(() => new Array(length2 + 1).fill(0))
     for (let i = 1; i <= length1; i++) {
         for (let j = 1; j <= length2; j++) {
             if (text1[i - 1] === text2[j - 1]) {

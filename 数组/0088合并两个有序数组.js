@@ -8,3 +8,31 @@ var merge = function (nums1, m, nums2, n) {
     }
   }
 };
+
+// 拓展：如果合并k个有序数组呢？
+// 归并
+function mergeK(nums) {
+  return helper(nums, 0, nums.length - 1);
+}
+
+function helper(nums, start, end) {
+  if(start === end) {
+    return nums[start];
+  }
+  let mid = (start + end) >> 1;
+  return merge(helper(nums, start, mid), helper(nums, mid + 1, end));
+}
+
+var merge = function (nums1, nums2) {
+  let l = 0, r = 0;
+  let res = [];
+  while (l < nums1.length || r < nums2.length) {
+    if(r >= nums2.length || nums1[l] < nums2[r]) {
+      res.push(nums1[l++]);
+    } else {
+      res.push(nums2[r++]);
+    }
+  }
+  return res;
+};
+console.log(mergeK([[1, 2, 3], [2, 3, 4],[-3,0,2,3,4,8]]));

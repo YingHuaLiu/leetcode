@@ -6,18 +6,18 @@ var diameterOfBinaryTree = function (root) {
     // 只有一个节点或没有节点时，直径是0
     let res = 0;
 
-    function helper(root) {
+    function dfs(root) {
         if (!root) {
             return 0;
         }
-        let left = helper(root.left);
-        let right = helper(root.right);
+        let left = dfs(root.left);
+        let right = dfs(root.right);
         // 比较目前记录的最长直径和当前节点的最长直径进行比较
         res = Math.max(res, left + right);
         // 返回当前节点的深度
         return Math.max(left, right) + 1;
     }
 
-    helper(root)
+    dfs(root)
     return res
 };

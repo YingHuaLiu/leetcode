@@ -1,10 +1,6 @@
 const { createLinkedList, ListNode } = require('../Tools');
 // 1.归并排序
 var sortList = function (head) {
-  return mergeSort(head);
-};
-
-function mergeSort(head) {
   if(!head || !head.next) {
     return head;
   }
@@ -15,8 +11,8 @@ function mergeSort(head) {
   }
   let temp = slow.next;
   slow.next = null;
-  return merge(mergeSort(head), mergeSort(temp));
-}
+  return merge(sortList(head), sortList(temp));
+};
 
 function merge(head1, head2) {
   if(!head1) return head2;

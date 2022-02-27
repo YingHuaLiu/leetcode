@@ -66,7 +66,10 @@ function medianOfThree(nums, left, right) {
 function findKthLargest(nums, k) {
   let heapSize = nums.length;
   // 构建出一个大顶堆
-  buildHeap(nums, heapSize);
+  // 从最后一个非叶子节点开始
+  for (let i = (heapSize >> 1) - 1; i >= 0; i--) {
+    maxHeapify(nums, i, heapSize);
+  }
   // 核心：这里i >= nums.length - k + 1,是当遍历到top k顶构造完成时，不再交换到尾部，直接获取头节点就是top k
   for (let i = nums.length - 1; i >= nums.length - k + 1; i--) {
     // 将堆顶节点nums[0]换到nums末尾,下次处理[0,heapSize-1]的堆
@@ -77,13 +80,6 @@ function findKthLargest(nums, k) {
     maxHeapify(nums, 0, heapSize);
   }
   return nums[0];
-}
-
-function buildHeap(nums, heapSize) {
-  // 从最后一个非叶子节点开始
-  for (let i = (heapSize >> 1) - 1; i >= 0; i--) {
-    maxHeapify(nums, i, heapSize);
-  }
 }
 
 // i是非叶子节点，该函数是调整下标i为顶的堆

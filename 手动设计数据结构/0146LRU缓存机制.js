@@ -1,5 +1,3 @@
-// 进阶：多线程情况下如何做？
-
 class ListNode {
   constructor(key, value) {
     this.key = key;

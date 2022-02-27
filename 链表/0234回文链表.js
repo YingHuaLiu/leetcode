@@ -7,10 +7,10 @@ const isPalindrome = (head) => {
 
   let cur = head;
   let temp = lastNode;
-  let sign = true;
-  while (temp && sign) {
+  let res = true;
+  while (temp && res) {
     if(temp.val !== cur.val) {
-      sign = false;
+      res = false;
     }
     temp = temp.next;
     cur = cur.next;
@@ -18,7 +18,7 @@ const isPalindrome = (head) => {
 
   midNode.next = reverseList(lastNode);
 
-  return sign;
+  return res;
 };
 
 const reverseList = (head) => {

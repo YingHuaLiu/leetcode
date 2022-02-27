@@ -23,7 +23,7 @@ function flat(arr) {
 }
 
 /**
- * 控制拍平的层数
+ * num: 控制拍平的层数
  */
 function flat(arr, num = 1) {
   return num > 0

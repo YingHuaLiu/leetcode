@@ -27,6 +27,7 @@ function help(nums, left, right) {
       r--;
     }
   }
+  // 此时l,r指向pivot的两边
   help(nums, left, l - 1);
   help(nums, r + 1, right);
 }
