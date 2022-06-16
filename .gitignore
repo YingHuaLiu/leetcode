@@ -2,3 +2,4 @@
 *.iml
 test.*
 /test
+/node_modules

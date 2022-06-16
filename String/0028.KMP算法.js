@@ -1,6 +1,6 @@
 // https://leetcode-cn.com/problems/implement-strstr/solution/duo-tu-yu-jing-xiang-jie-kmp-suan-fa-by-w3c9c/
 function strStr(haystack, needle) {
-  if(!needle.length) {
+  if (!needle.length) {
     return 0;
   }
   // 前缀数组,下标i表示needle中[0,i]的字串前缀和后缀相同的字符串长度
@@ -12,7 +12,7 @@ function strStr(haystack, needle) {
       left = next[left - 1];
     }
     // 因为left下标和前缀后缀相同的字符串长度正好差一位，所以将left进一位，正好等于长度
-    if(needle[left] === needle[right]) {
+    if (needle[left] === needle[right]) {
       left++;
     }
     // 以right为结尾的子串的相同前后缀长度为left
@@ -25,10 +25,11 @@ function strStr(haystack, needle) {
     while (right > 0 && haystack[left] !== needle[right]) {
       right = next[right - 1];
     }
-    if(needle[right] === haystack[left]) {
+    if (needle[right] === haystack[left]) {
       right++;
     }
-    if(right === needle.length) {
+    if (right === needle.length) {
+      // 返回匹配的字符串的起点
       return left - right + 1;
     }
   }
