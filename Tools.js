@@ -45,4 +45,9 @@ function createLinkedList(nums) {
   return root.next;
 };
 
-module.exports = { PriorityQueue, ListNode, createLinkedList };
+function TreeNode(val) {
+  this.val = val;
+  this.left = this.right = this.parent = null;
+}
+
+module.exports = { PriorityQueue, ListNode, createLinkedList, TreeNode };

@@ -1,4 +1,4 @@
-const { TreeNode } = require('./Tools');
+const { TreeNode } = require('../../Tools');
 
 // 1. 层序序列化
 const serialize1 = root => {
