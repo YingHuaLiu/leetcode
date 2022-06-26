@@ -11,6 +11,7 @@ var findRepeatNumber = function (nums) {
     if(nums[nums[i]] === nums[i]) {
       return nums[i];
     }
+    // 交换temp和i位置
     let temp = nums[i];
     nums[i] = nums[temp];
     nums[temp] = temp;

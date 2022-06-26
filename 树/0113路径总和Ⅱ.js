@@ -1,63 +1,54 @@
 // dfs
 var pathSum = function (root, targetSum) {
-  const res = [];
-  const dfs = function (root, sum, path) {
-    if(!root) {
-      return;
-    }
-    sum += root.val;
-    path.push(root.val);
-    // 如果当前是叶子节点，并且路径和正确，则加入res中
-    if(!root.left && !root.right && sum === targetSum) {
-      res.push(path.slice());
-    }
-    dfs(root.left, sum, path);
-    dfs(root.right, sum, path);
-    // 核心：path在这出栈
-    path.pop();
-  };
-  dfs(root, 0, []);
+  let res = [], path = [];
+  dfs(root, targetSum, path, res);
   return res;
 };
+
+function dfs(root, target, path, res) {
+  if(!root) {
+    return;
+  }
+  path.push(root.val);
+  if(target === root.val && !root.left && !root.right) {
+    res.push(path.slice());
+  }
+  dfs(root.left, target - root.val, path, res);
+  dfs(root.right, target - root.val, path, res);
+  path.pop();
+}
 
 // bfs
 var pathSum = function (root, targetSum) {
   if(!root) {
     return [];
   }
-  const res = [], queue1 = [root], queue2 = [0];
-  // 记录每个子节点到父节点的映射
-  let map = new Map();
-  while (queue1.length) {
-    let node = queue1.shift();
-    let sum = queue2.shift() + node.val;
+  let map = new Map(), queue = [[root, root.val]], res = [];
+  while (queue.length) {
+    let [node, sum] = queue.shift();
     if(!node.left && !node.right) {
       if(sum === targetSum) {
-        getPath(node, res, map);
+        res.push(getPath(node, map));
       }
     } else {
       if(node.left) {
-        // 记录父子节点映射
         map.set(node.left, node);
-        queue1.push(node.left);
-        queue2.push(sum);
+        queue.push([node.left, sum + node.left.val]);
       }
       if(node.right) {
-        // 记录父子节点映射
         map.set(node.right, node);
-        queue1.push(node.right);
-        queue2.push(sum);
+        queue.push([node.right, sum + node.right.val]);
       }
     }
   }
   return res;
 };
-// 获取叶子节点到根节点的路径
-const getPath = (root, res, map) => {
+
+function getPath(root, map) {
   let path = [];
   while (root) {
     path.unshift(root.val);
     root = map.get(root);
   }
-  res.push(path);
-};
+  return path;
+}

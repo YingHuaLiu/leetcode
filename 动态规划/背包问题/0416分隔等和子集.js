@@ -5,6 +5,7 @@ var canPartition = function (nums) {
     return false;
   }
   sum /= 2;
+  // 前i个数凑j能否成功，01背包问题
   let dp = new Array(nums.length + 1).fill(0).map(() => new Array(sum + 1).fill(false));
   dp[0][0] = true;
   for (let i = 1; i <= nums.length; i++) {

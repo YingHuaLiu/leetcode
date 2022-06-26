@@ -38,16 +38,16 @@ const recoverTree = function (root) {
       stack.push(root);
       root = root.left;
     }
-    let node = stack.pop();
-    if(pre && pre.val > node.val) {
+    root = stack.pop();
+    if(pre && pre.val > root.val) {
       // 第一次遇到pre节点大于当前节点，则pre节点必是错误节点
       if(!x) {
         x = pre;
       }
-      y = node;
+      y = root;
     }
-    pre = node;
-    root = node.right;
+    pre = root;
+    root = root.right;
   }
   // 交换错误节点的值
   let temp = y.val;

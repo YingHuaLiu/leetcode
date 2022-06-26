@@ -1,3 +1,4 @@
+// 与简单题不同：每个数可重复两次
 // 读写双指针
 var removeDuplicates = function (nums) {
   let write = 0, read = 0;

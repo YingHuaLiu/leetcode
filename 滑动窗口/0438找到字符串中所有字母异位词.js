@@ -51,24 +51,24 @@ function findAnagrams(s, p) {
 
   for (let i = 1; i <= s.length - p.length; i++) {
     //如果左端点的字频原来是1，移动窗口后变成0，说明不同的数量会少一个
-    if(array[s[i - 1].charCodeAt() - 'a'.charCodeAt()] === 1) {
+    if(array[s.charCodeAt(i - 1) - 'a'.charCodeAt()] === 1) {
       diff--;
-    } else if(array[s[i - 1].charCodeAt() - 'a'.charCodeAt()] === 0) {
+    } else if(array[s.charCodeAt(i - 1) - 'a'.charCodeAt()] === 0) {
       //如果左端点的字频原来是0，移动窗口后变成-1，说明不同的数量会多一个
       diff++;
     }
     // 移动左端点到当前的i
-    --array[s[i - 1].charCodeAt() - 'a'.charCodeAt()];
+    --array[s.charCodeAt(i - 1) - 'a'.charCodeAt()];
 
     //如果右端点的字频原来是0，移动窗口后变成1，说明不同的数量会多一个
-    if(array[s[i - 1 + p.length].charCodeAt() - 'a'.charCodeAt()] === 0) {
+    if(array[s.charCodeAt(i - 1 + p.length) - 'a'.charCodeAt()] === 0) {
       diff++;
-    } else if(array[s[i - 1 + p.length].charCodeAt() - 'a'.charCodeAt()] === -1) {
+    } else if(array[s.charCodeAt(i - 1 + p.length) - 'a'.charCodeAt()] === -1) {
       //如果右端点的字频原来是-1，移动窗口后变成0，说明不同的数量会少一个
       diff--;
     }
     // 移动右端点到当前的i-1+p.length
-    ++array[s[i - 1 + p.length].charCodeAt() - 'a'.charCodeAt()];
+    ++array[s.charCodeAt(i - 1 + p.length) - 'a'.charCodeAt()];
     if(diff === 0) {
       res.push(i);
     }

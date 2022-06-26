@@ -1,4 +1,4 @@
-// 1.二维dp
+// 1.完全背包
 var numSquares = function (n) {
   let length = Math.floor(Math.sqrt(n));
   // dp[i][j]表示前i个数凑出j所需完全平方数的最小个数
@@ -10,11 +10,10 @@ var numSquares = function (n) {
   }
   for (let i = 1; i <= length; i++) {
     for (let j = 1; j <= n; j++) {
-      // 如果不选第i个数
-      dp[i][j] = dp[i - 1][j];
-      // 如果选第i个数，因为每个平方数可以选多次，所以k*i*i必须小于等于j才有效
-      for (let k = 1; k * i * i <= j; k++) {
-        dp[i][j] = Math.min(dp[i][j], dp[i][j - i * i * k] + k);
+      if(j >= i * i) {
+        dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - i * i] + 1);
+      } else {
+        dp[i][j] = dp[i - 1][j];
       }
     }
   }

@@ -16,10 +16,6 @@ const serialize1 = root => {
       res.push('#');
     }
   }
-  // 把末尾的#删掉
-  // while (res[res.length - 1] === '#') {
-  //     res.pop();
-  // }
   return res.join(' ');
 };
 const deserialize1 = (str) => {

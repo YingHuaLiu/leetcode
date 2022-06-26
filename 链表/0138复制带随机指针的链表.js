@@ -6,7 +6,7 @@ var copyRandomList = function (head) {
       return null;
     }
     if(!map.has(node)) {
-      let newNode = new Node(node.val);
+      let newNode = new ListNode(node.val);
       map.set(node, newNode);
       // 一直往右深入，将每个节点保存进map
       newNode.next = help(node.next);

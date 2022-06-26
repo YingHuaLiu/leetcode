@@ -3,8 +3,7 @@ var deleteDuplicates = function (head) {
   if(!head || !head.next) {
     return head;
   }
-  let root = new ListNode(-1);
-  root.next = head;
+  let root = new ListNode(-1,head);
   let cur = root;
 
   while (cur.next && cur.next.next) {

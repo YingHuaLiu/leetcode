@@ -1,5 +1,5 @@
 // 堆排序
-const heapSort = array => {
+module.exports = function heapSort(array) {
   // 初始化大顶堆，从第一个非叶子结点开始
   for (let i = array.length >> 1 - 1; i >= 0; i--) {
     heapify(array, i, array.length);

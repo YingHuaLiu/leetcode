@@ -1,6 +1,5 @@
 var removeNthFromEnd = function (head, n) {
-  let root = new ListNode(-1);
-  root.next = head;
+  let root = new ListNode(-1,head);
   let fast = head;
   for (let i = 0; i < n; i++) {
     fast = fast.next;

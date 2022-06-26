@@ -21,7 +21,7 @@ const flatten = function (root) {
   }
 };
 
-// 2.先序遍历的逆序遍历，右子树->左子树->父
+// 2.从右节点开始的后序遍历，右子树->左子树->父
 const flatten = function (root) {
   let pre = null;
   const dfs = function (root) {

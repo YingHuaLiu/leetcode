@@ -3,12 +3,12 @@
 // 计算：初始化后还有多少岛屿，即是封闭的岛屿
 function closedIsland(grid) {
   let m = grid.length, n = grid[0].length;
-  // 将上下两边相连的陆地变成水
+  // 将左右两边相连的陆地变成水
   for (let i = 0; i < m; i++) {
     dfs(i, 0);
     dfs(i, n - 1);
   }
-  // 将左右两边相连的陆地变成水
+  // 将上下两边相连的陆地变成水
   for (let i = 0; i < n; i++) {
     dfs(0, i);
     dfs(m - 1, i);

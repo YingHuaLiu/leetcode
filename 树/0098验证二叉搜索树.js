@@ -37,25 +37,21 @@ const isValidBST = function (root) {
 };
 
 // 3. 中序递归
-const isValidBST = function (root) {
-  let preVal = Number.MIN_SAFE_INTEGER, signal = true;
-  const dfs = function (root) {
-    if(!root) {
-      return;
-    }
-    if(!signal) {
+var isValidBST = function (root) {
+  let res = true, pre = -Number.MIN_VALUE;
+  dfs(root);
+  return res;
+
+  function dfs(root) {
+    if(!root || !res) {
       return;
     }
     dfs(root.left);
-
-    if(root.val <= preVal) {
-      signal = false;
+    if(pre >= root.val) {
+      res = false;
       return;
     }
-    preVal = root.val;
-
+    pre = root.val;
     dfs(root.right);
-  };
-  dfs(root);
-  return signal;
+  }
 };

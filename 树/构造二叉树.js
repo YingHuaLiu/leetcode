@@ -16,14 +16,14 @@ function buildTreeByPreAndInHelper(preorder, pStart, pEnd, inorder, iStart, iEnd
   }
   //重建根节点
   let treeNode = new TreeNode(preorder[pStart]);
-  let index = 0;  //index找到根节点在中序遍历的位置
-  while (inorder[iStart + index] !== treeNode.val) {
-    index++;
+  let gap = 0;  //index找到根节点在中序遍历的位置
+  while (inorder[iStart + gap] !== treeNode.val) {
+    gap++;
   }
   //重建左子树
-  treeNode.left = buildTreeByPreAndInHelper(preorder, pStart + 1, pStart + index, inorder, iStart, iStart + index - 1);
+  treeNode.left = buildTreeByPreAndInHelper(preorder, pStart + 1, pStart + gap, inorder, iStart, iStart + gap - 1);
   //重建右子树
-  treeNode.right = buildTreeByPreAndInHelper(preorder, pStart + index + 1, pEnd, inorder, iStart + index + 1, iEnd);
+  treeNode.right = buildTreeByPreAndInHelper(preorder, pStart + gap + 1, pEnd, inorder, iStart + gap + 1, iEnd);
 
   return treeNode;
 }

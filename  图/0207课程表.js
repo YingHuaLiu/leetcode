@@ -6,11 +6,12 @@ const canFinish = function (numCourses, prerequisites) {
   let graph = buildGraph(numCourses, prerequisites);
 
   for (let i = 0; i < numCourses; i++) {
-    dfs(graph, i);
+    dfs(i);
   }
   return !hasCycle;
 
   function dfs(s) {
+    // 注意：一定要先判断是否在路径上
     // 当前节点在保存的路径上
     if(onPath[s]) {
       hasCycle = true;

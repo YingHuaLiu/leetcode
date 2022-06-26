@@ -7,7 +7,7 @@ const isBipartite = function (graph) {
   let res = true;
 
   for (let i = 0; i < length; i++) {
-    dfs(graph, i);
+    dfs(i);
   }
   return res;
 

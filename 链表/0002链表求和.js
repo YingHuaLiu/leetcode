@@ -41,3 +41,48 @@ var addTwoNumbers = function (l1, l2) {
 
   return dummy.next;
 };
+
+// 进阶：额外空间复杂度为1
+function ListNode(val, next) {
+  this.val = (val === undefined ? 0 : val);
+  this.next = (next === undefined ? null : next);
+}
+
+var addTwoNumbers = function (l1, l2) {
+  let head = l1, carry = 0, cur;
+  while (l1 && l2) {
+    let val = l1.val + l2.val + carry;
+    l1.val = val % 10;
+    carry = Math.floor(val / 10);
+    cur=l1;
+    l1 = l1.next;
+    l2 = l2.next;
+  }
+  if(!l1){
+    l1=l2;
+    cur.next=l2;
+  }
+  while (l1) {
+    let val = l1.val + carry;
+    l1.val = val % 10;
+    carry = Math.floor(val / 10);
+    cur=l1;
+    l1 = l1.next;
+  }
+  if(carry) {
+    cur.next = new ListNode(carry);
+  }
+  return head;
+};
+let l1 = new ListNode(9);
+l1.next = new ListNode(9);
+l1.next.next = new ListNode(9);
+l1.next.next.next = new ListNode(9);
+l1.next.next.next.next = new ListNode(9);
+l1.next.next.next.next.next = new ListNode(9);
+l1.next.next.next.next.next.next = new ListNode(9);
+let l2 = new ListNode(9);
+l2.next = new ListNode(9);
+l2.next.next = new ListNode(9);
+l2.next.next.next = new ListNode(9);
+console.log(addTwoNumbers(l1, l2));

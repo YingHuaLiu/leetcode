@@ -6,7 +6,7 @@ var exist = function (board, word) {
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
       if(board[i][j] === word[0]) {
-        dfs(i, j, 0, used, board, word);
+        dfs(i, j, 0);
       }
       // 判断res是否为true，有就提前结束循环
       if(res) {
@@ -29,10 +29,9 @@ var exist = function (board, word) {
       return;
     }
     used[r][c] = true;
-    let m = board.length, n = board[0].length;
     for (let [row, col] of [[r + 1, c], [r - 1, c], [r, c + 1], [r, c - 1]]) {
       if(row >= 0 && row < m && col >= 0 && col < n && !used[row][col]) {
-        dfs(row, col, start + 1, used, board, word);
+        dfs(row, col, start + 1);
       }
     }
     used[r][c] = false;

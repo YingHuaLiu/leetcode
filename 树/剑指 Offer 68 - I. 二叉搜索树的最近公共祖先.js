@@ -9,8 +9,7 @@ var lowestCommonAncestor = function (root, p, q) {
       // 如果pq都大于当前节点，那么肯定在节点左边
       root = root.right;
     } else {
-      break;
+      return root;
     }
   }
-  return root;
 };

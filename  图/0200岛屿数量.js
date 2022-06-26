@@ -7,7 +7,7 @@ function numIslands(grid) {
       // 碰到1就增加岛屿数，并遍历这个岛屿的节点将其置为0
       if(grid[r][c] === '1') {
         res++;
-        dfs(grid, r, c);
+        dfs(r, c);
       }
     }
   }

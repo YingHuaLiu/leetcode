@@ -8,6 +8,9 @@ function pathSum(root, targetSum) {
   let map = new Map(), res = 0;
   map.set(0, 1);
 
+  dfs(root, root.val);
+  return res;
+
   function dfs(root, curSum) {
     // map保存的是从根节点到各个节点的前缀和，curSum是从根节点到当前节点的路径和
     // curSum包括了中间的某个节点到当前节点正好凑成了target
@@ -20,9 +23,6 @@ function pathSum(root, targetSum) {
     // 回溯，防止对其他同层的节点产生影响
     map.set(curSum, map.get(curSum) - 1);
   }
-
-  dfs(root, root.val);
-  return res;
 }
 
 // 笨比方法，把每个节点当作根节点进行遍历

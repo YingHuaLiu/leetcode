@@ -2,8 +2,7 @@ var swapPairs = function (head) {
   if(!head || !head.next) {
     return head;
   }
-  let root = new ListNode(-1);
-  root.next = head;
+  let root = new ListNode(-1,head);
 
   let pre = root, cur = head;
   // 保证还有双数节点没调换
