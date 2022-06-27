@@ -1,3 +1,4 @@
+// 核心：每个元素在子数组中当过几次最小值，只要计算（index-左边界index）*（右边界index-index）
 function sumSubarrayMins(arr) {
   const length = arr.length;
   if(!length) {
