@@ -1,0 +1,3 @@
+function fractionToDecimal(numerator, denominator) {
+
+}
