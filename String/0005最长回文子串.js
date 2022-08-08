@@ -2,7 +2,7 @@
 // 中心扩散法，从每一个点作为中心点开始，分别向左、向右、同时向左向右扩散
 function longestPalindrome(s) {
   const length = s.length;
-  if(!s || !length) {
+  if(!s || !s.length) {
     return s;
   }
   let start = 0, maxLen = 0;
@@ -13,7 +13,7 @@ function longestPalindrome(s) {
     let len2 = expandAroundCenter(s, i, i + 1);
     let len = Math.max(len1, len2);
     if(len > maxLen) {
-      start = i - (len - 1) >> 1;
+      start = i - ((len - 1) >> 1);
       maxLen = len;
     }
   }
