@@ -17,7 +17,7 @@ function preOrder(root) {
   const res = [];
 
   function recursion(head) {
-    if(!root) {
+    if(!head) {
       return;
     }
     res.push(head.val);

@@ -14,15 +14,12 @@ const findOrder = function (numCourses, prerequisites) {
   return res;
 
   function traverse(s) {
-    // 当前节点在保存的路径上
     if(onPath[s]) {
       hasCycle = true;
     }
-    // 当前节点访问过，或者有环，没必要继续访问
     if(visited[s] || hasCycle) {
       return;
     }
-    // 遍历前位置，开始回溯
     onPath[s] = true;
     visited[s] = true;
     for (let item of graph[s]) {
@@ -34,7 +31,6 @@ const findOrder = function (numCourses, prerequisites) {
   }
 };
 
-// 构建有向图
 function buildGraph(numCourses, prerequisites) {
   let graph = new Array(numCourses).fill(0).map(() => []);
   for (let [to, from] of prerequisites) {
