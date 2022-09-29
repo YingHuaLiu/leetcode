@@ -5,15 +5,14 @@ var exist = function (board, word) {
   let used = new Array(m).fill(0).map(() => new Array(n).fill(false));
   for (let i = 0; i < m; i++) {
     for (let j = 0; j < n; j++) {
-      if(board[i][j] === word[0]) {
-        dfs(i, j, 0);
-      }
+      dfs(i, j, 0);
       // 判断res是否为true，有就提前结束循环
       if(res) {
         return true;
       }
     }
   }
+  return false;
 
   function dfs(r, c, start) {
     // 当前格子已被占用或者res已变成true
@@ -30,14 +29,12 @@ var exist = function (board, word) {
     }
     used[r][c] = true;
     for (let [row, col] of [[r + 1, c], [r - 1, c], [r, c + 1], [r, c - 1]]) {
-      if(row >= 0 && row < m && col >= 0 && col < n && !used[row][col]) {
+      if(row >= 0 && row < m && col >= 0 && col < n) {
         dfs(row, col, start + 1);
       }
     }
     used[r][c] = false;
   }
-
-  return false;
 };
 
 

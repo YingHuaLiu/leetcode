@@ -1,11 +1,11 @@
 var combinationSum = function (candidates, target) {
-  let res = [];
+  let res = [], path = [];
   // 排序是剪枝的前提
   candidates.sort((a, b) => a - b);
-  dfs(0, 0, []);
+  dfs(0, 0);
   return res;
 
-  function dfs(curSum, start, path) {
+  function dfs(curSum, start) {
     if(curSum === target) {
       res.push(path.slice());
       return;
@@ -19,7 +19,7 @@ var combinationSum = function (candidates, target) {
         break;
       }
       path.push(candidates[i]);
-      dfs(curSum + candidates[i], i, path);
+      dfs(curSum + candidates[i], i);
       path.pop();
     }
   }

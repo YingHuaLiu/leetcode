@@ -5,7 +5,7 @@ var possibleBipartition = function (n, dislikes) {
   const graph = buildGraph(n, dislikes);
 
   for (let i = 1; i <= n; i++) {
-    dfs(graph, i);
+    dfs(i);
   }
   return res;
 
@@ -16,7 +16,6 @@ var possibleBipartition = function (n, dislikes) {
     visited[s] = true;
     for (let item of graph[s]) {
       if(!visited[item]) {
-        visited[item] = true;
         colors[item] = !colors[s];
         dfs(item);
       } else {
@@ -30,7 +29,7 @@ var possibleBipartition = function (n, dislikes) {
 };
 
 function buildGraph(n, dislikes) {
-  let graph = new Array(n + 1).fill(0).map(item => []);
+  let graph = new Array(n + 1).fill(0).map(() => []);
   for (let [a, b] of dislikes) {
     graph[a].push(b);
     graph[b].push(a);

@@ -1,18 +1,23 @@
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number[][]}
+ */
 var combine = function (n, k) {
-  let res = [];
-  backTrack(n, [], res, k, 1);
+  let res = [], path = [];
+  dfs(1, k);
   return res;
-};
-const backTrack = (n, path, res, k, start) => {
-  if(path.length === k) {
-    res.push(path.slice());
-    return;
+
+  function dfs(index, left) {
+    if(left === 0) {
+      res.push(path.slice());
+      return;
+    }
+    for (let i = index; i <= n - left + 1; i++) {
+      path.push(i);
+      dfs(i + 1, left - 1);
+      path.pop();
+    }
   }
-  // 优化点：i的范围要小于n-k+1+已收录的temp长度
-  for (let i = start; i <= n - (k - path.length) + 1; i++) {
-    path.push(i);
-    backTrack(n, path, res, k, i + 1);
-    path.pop();
-  }
+
 };
-console.log(combine(5, 4));

@@ -7,11 +7,13 @@
  */
 var coinChange = function (coins, amount) {
   let dp = new Array(coins.length + 1).fill(0).map(() => new Array(amount + 1).fill(Infinity));
-  // 前0种硬币凑0元，最少只需0个硬币
-  dp[0][0] = 0;
+  // 前i种硬币凑0元，最少只需0个硬币
+  for (let i = 0; i <= coins.length; i++) {
+    dp[i][0] = 0;
+  }
   for (let i = 1; i <= coins.length; i++) {
     let val = coins[i - 1];
-    for (let j = 0; j <= amount; j++) {
+    for (let j = 1; j <= amount; j++) {
       if(j >= coins[i - 1]) {
         dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - val] + 1);
       } else {

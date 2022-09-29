@@ -37,7 +37,7 @@ function findAnagrams(s, p) {
     array[s[i].charCodeAt() - 'a'.charCodeAt()]++;
     array[p[i].charCodeAt() - 'a'.charCodeAt()]--;
   }
-  //记录当前窗口与字符串 pp 中数量不同的字母的个数，并在滑动窗口的过程中维护它
+  //记录当前窗口与字符串 p 中数量不同的字母的个数，并在滑动窗口的过程中维护它
   let diff = 0;
   for (let i = 0; i < 26; i++) {
     if(array[i] !== 0) {
